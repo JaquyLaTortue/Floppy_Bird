@@ -2,8 +2,12 @@
 
 public class StartGame : MonoBehaviour
 {
-    [SerializeField] private GameObject _bird;
-    [SerializeField]private PipeSpawner _pipeSpawner;
+    [SerializeField]
+    private GameObject _bird;
+
+    [SerializeField]
+    private PipeSpawner _pipeSpawner;
+
     private FlapMovement _flapMovement;
     private BirdCollisions _birdCollisions;
 

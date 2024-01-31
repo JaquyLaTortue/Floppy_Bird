@@ -5,13 +5,13 @@ public class Pipes : MonoBehaviour
     [SerializeField]
     private float _speed = 1;
 
-    public GameObject bird { get; set; }
+    public GameObject Bird { get; set; }
 
     private BirdCollisions _birdCollision;
 
     private void Start()
     {
-        _birdCollision = bird.GetComponent<BirdCollisions>();
+        _birdCollision = Bird.GetComponent<BirdCollisions>();
     }
 
     private void Update()

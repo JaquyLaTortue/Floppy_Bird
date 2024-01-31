@@ -5,11 +5,11 @@ public class FlapMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
 
-    // The force applied to the bird when flapping
+    // The force applied to the Bird when flapping
     [SerializeField]
     private int _flapForce = 10;
 
-    // The gravity applied to the bird to give the game a more natural feel
+    // The gravity applied to the Bird to give the game a more natural feel
     [SerializeField]
     private float _gravity = 2.8f;
 
@@ -30,7 +30,7 @@ public class FlapMovement : MonoBehaviour
             return;
         }
 
-        // Rotate the bird down when falling and up when his flying up
+        // Rotate the Bird down when falling and up when his flying up
         transform.rotation = Quaternion.Euler(0, 0, _rb.velocity.y * 4);
     }
 
@@ -45,7 +45,7 @@ public class FlapMovement : MonoBehaviour
             return;
         }
 
-        // Reset the velocity of the bird to zero before applying the flap force so the bird doesn't stay at the same height
+        // Reset the velocity of the Bird to zero before applying the flap force so the Bird doesn't stay at the same height
         _rb.velocity = Vector2.zero;
         _rb.AddForce(Vector2.up * _flapForce, ForceMode2D.Impulse);
     }

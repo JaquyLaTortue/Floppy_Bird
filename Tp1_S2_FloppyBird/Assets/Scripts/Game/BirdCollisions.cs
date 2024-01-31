@@ -11,6 +11,9 @@ public class BirdCollisions : MonoBehaviour
     [SerializeField]
     private EndDisplayUi _endDisplayUi;
 
+    [SerializeField]
+    private Paralax _paralax;
+
     public void StartSetUp()
     {
         Alive = true;
@@ -33,7 +36,7 @@ public class BirdCollisions : MonoBehaviour
     }
 
     /// <summary>
-    /// Cancel the gravity of the bird when he takes damage so he's freezed where he is
+    /// Cancel the gravity of the Bird when he takes damage so he's freezed where he is
     /// </summary>
     private void TakeDamage()
     {
@@ -48,5 +51,6 @@ public class BirdCollisions : MonoBehaviour
 
         GetComponent<PlayerInput>().enabled = false;
         _endDisplayUi.DisplayEndScreen();
+        _paralax.StopParalax();
     }
 }

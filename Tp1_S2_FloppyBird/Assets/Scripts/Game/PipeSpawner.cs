@@ -18,10 +18,21 @@ public class PipeSpawner : MonoBehaviour
 
     [SerializeField]
     private float _spawnMultiplier = 1;
+    private float _timeSinceGameStarted = 0;
+    private bool _started = false;
+
+    private void Update()
+    {
+        if (_started && _birdCollision.Alive)
+        {
+            _timeSinceGameStarted += Time.deltaTime;
+        }
+    }
 
     public void StartSpawnLoop()
     {
         _birdCollision = _bird.GetComponent<BirdCollisions>();
+        _started = true;
         SpawnPipe();
     }
 
@@ -31,7 +42,7 @@ public class PipeSpawner : MonoBehaviour
         {
             UpdateSpawnMultiplier();
             GameObject currentPipe = Instantiate(_pipePrefab, new Vector3(transform.position.x, Random.Range(_spawnBoundsY[0], _spawnBoundsY[1]), transform.position.z), Quaternion.identity);
-            currentPipe.GetComponent<Pipes>().bird = this._bird;
+            currentPipe.GetComponent<Pipes>().Bird = this._bird;
             StartCoroutine(SpawnPipeCoroutine());
             return;
         }
@@ -39,7 +50,7 @@ public class PipeSpawner : MonoBehaviour
 
     private void UpdateSpawnMultiplier()
     {
-        switch (Time.time)
+        switch (_timeSinceGameStarted)
         {
             case > 15f and < 40f:
                 _spawnMultiplier = 1.2f;
@@ -60,7 +71,6 @@ public class PipeSpawner : MonoBehaviour
             default:
                 return;
         }
-        Debug.Log(_spawnMultiplier);
     }
 
     private IEnumerator SpawnPipeCoroutine()

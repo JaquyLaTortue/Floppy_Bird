@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    private int _score = 0;
+    public int ScoreCount { get; private set; } = 0;
+
     [SerializeField]
     private TMP_Text _scoreText;
 
@@ -13,16 +14,15 @@ public class Score : MonoBehaviour
     private void Start()
     {
         _birdCollisions.ScoreUp += AddScore;
-        _scoreText.text = $"Score : {_score}";
+        _scoreText.text = $"Score : {ScoreCount}";
     }
 
     /// <summary>
-    /// Increment the score each time the bird passes a pipe
+    /// Increment the score each time the Bird passes a pipe
     /// </summary>
     public void AddScore()
     {
-        Debug.Log("Score Up");
-        _score++;
-        _scoreText.text = $"Score : {_score}";
+        ScoreCount++;
+        _scoreText.text = $"Score : {ScoreCount}";
     }
 }
