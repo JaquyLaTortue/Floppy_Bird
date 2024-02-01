@@ -13,6 +13,9 @@ public class FlapMovement : MonoBehaviour
     [SerializeField]
     private float _gravity = 2.8f;
 
+    [SerializeField]
+    private float _rotationForce = 4f;
+
     public void StartSetUp()
     {
         if (_rb == null)
@@ -31,7 +34,7 @@ public class FlapMovement : MonoBehaviour
         }
 
         // Rotate the Bird down when falling and up when his flying up
-        transform.rotation = Quaternion.Euler(0, 0, _rb.velocity.y * 4);
+        transform.rotation = Quaternion.Euler(0, 0, _rb.velocity.y * _rotationForce);
     }
 
     /// <summary>

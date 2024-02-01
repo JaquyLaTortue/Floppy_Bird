@@ -1,0 +1,34 @@
+Evrard Alban
+Post Mortem Floppy Bird
+
+Pour commencer, mon code a bien changé entre mon diagramme UML et mon code final.
+
+Premièrement, j'ai développé 8 scripts au lieu de 5 sur mon diagramme.
+Ensuite, chaque script ou presque tous ont changé.
+
+D'abord pour le script de score:
+Ajout d'une réference au script "BirdCollision" et la fonction "AddScore" est appellée par l'un de ses events et ajout d'un champ contenant un text.
+
+Pour le script Flap Movement
+Renommage du champ "flapHeight" en "FlapForce" et ajout d'un champ de Rotation force .
+Utilisation de 3 méthodes Updates StartSetUp et Flapping servant respectivement à gerer la rotation, preparer certaines valeur pour lancer le jeu et enfin à faire flapper le bird.
+
+Pour le bird collision
+Ajout d'un champ bool d'un event et de 2 références a d'autres scripts ("Paralax" et "EndDisplayUI").
+Sinon le diagramme est respecté pour ce script.
+
+Pour Pipes
+La zone libre est gérée dans le préfab et n'est pas modifiable 
+Ajout de champs "speed" et "_birdCollsion" et Ajout des déplacement des tuyaux dans l'update.
+La gestion du spawn est faite dans le script "PipeSpawner".
+
+Pour PipeSpawner
+Création du script faisant tourner une boucle qui spawn des Pipes toutes les x seconde et au fil du temps ce x est réduit.
+
+Pour StartGame
+Tous les champs ont été modifiés pour pouvoir avoir des références aux scripts "PipeSpawner","FlapMovement" et "BirdCollision" permettant de préparer troutes les valeurs nécéssaires au jeu.
+
+J'ai ajouté 2 autres scripts 
+- EndDisplayUI permettant d'update l'ui et d'afficher le scrore et de gérer quel ui s'affiche. Il permet aussi de quitter le jeu et de restart une partie.
+
+- Paralax permettant le mouvement de l'arrière plan avec une vitesse modifiable et avec 2 méthodes permetant sont début et sa fin
